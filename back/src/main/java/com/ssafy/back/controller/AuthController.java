@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.back.dto.request.auth.IdCheckRequestDto;
 import com.ssafy.back.dto.response.auth.IdCheckResponseDto;
+import com.ssafy.back.dto.request.auth.EmailCertificationRequestDto;
+import com.ssafy.back.dto.response.auth.EmailCertificationResponseDto;
 import com.ssafy.back.service.AuthService;
 
 import jakarta.validation.Valid;
@@ -27,4 +29,13 @@ public class AuthController {
         ResponseEntity<? super IdCheckResponseDto> response = authService.idCheck(requestBody);
         return response;
     }
+
+    @PostMapping("/email-certification")
+    public ResponseEntity<? super EmailCertificationResponseDto> emailCertification(
+        @RequestBody @Valid EmailCertificationRequestDto requestBody
+    ){
+        ResponseEntity<? super EmailCertificationResponseDto> response = authService.emailCertification(requestBody);
+        return response;
+    }
+
 }
