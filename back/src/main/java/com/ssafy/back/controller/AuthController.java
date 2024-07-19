@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.back.dto.request.auth.IdCheckRequestDto;
+import com.ssafy.back.dto.request.auth.SignInRequestDto;
 import com.ssafy.back.dto.request.auth.SignUpRequestDto;
 import com.ssafy.back.dto.response.auth.IdCheckResponseDto;
 import com.ssafy.back.dto.request.auth.CheckCertificationRequestDto;
 import com.ssafy.back.dto.request.auth.EmailCertificationRequestDto;
 import com.ssafy.back.dto.response.auth.SignUpResponseDto;
+import com.ssafy.back.dto.response.auth.SignInResponseDto;
 import com.ssafy.back.dto.response.auth.EmailCertificationResponseDto;
 import com.ssafy.back.dto.response.auth.CheckCertificationResponseDto;
 import com.ssafy.back.service.AuthService;
@@ -55,6 +57,14 @@ public class AuthController {
         @RequestBody @Valid SignUpRequestDto requestBody
     ) {
         ResponseEntity<? super SignUpResponseDto> response = authService.signUp(requestBody);
+        return response;
+    }
+
+    @PostMapping("/sign-in")
+    public ResponseEntity<? super SignInResponseDto> signIn(
+        @RequestBody @Valid SignInRequestDto requestBody
+    ){
+        ResponseEntity<? super SignInResponseDto> response = authService.signIn(requestBody);
         return response;
     }
 }
